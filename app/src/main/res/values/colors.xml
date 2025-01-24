@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#1B1C1E</color>
+    <color name="card">#525356</color>
+    <color name="brown">#bf7a2a</color>
+    <color name="card_light">#F4F4F4</color>
+    <color name="gray">#A8AAA9</color>
+    <color name="pink">#D6738C</color>
+    <color name="color_in_stock">#71C164</color>
+    <color name="color_out_of_stock">#FF0000</color>
+    <color name="blue">#4788C6</color>
+    <color name="shimmerColor">#C2C2C2</color>
+</resources>

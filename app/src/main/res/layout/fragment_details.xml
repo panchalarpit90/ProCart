@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.procart.details.DetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".details.DetailsFragment">
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_320sdp"
+                android:background="@color/card_light"
+                android:scaleType="center"
+                app:imageUrl="@{viewModel.selectedProduct.thumbnail}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/icon_image"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                app:icon="@drawable/ic_back"
+                app:iconTint="@color/black"
+                app:layout_constraintStart_toStartOf="@id/product_image"
+                app:layout_constraintTop_toTopOf="@id/product_image" />
+
+            <TextView
+                android:id="@+id/property_type_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{viewModel.selectedProduct.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/brand_text"
+                tools:text="Electronics" />
+
+            <TextView
+                android:id="@+id/price_value_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{String.format(`$%s`, viewModel.selectedProduct.price)}"
+                android:textColor="@color/pink"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/property_type_text"
+                tools:text="$1000" />
+
+            <TextView
+                android:id="@+id/brand_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{viewModel.selectedProduct.brand}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_image"
+                tools:text="H and M" />
+
+            <ImageView
+                android:id="@+id/star_image"
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:src="@drawable/star_ic"
+                app:layout_constraintStart_toEndOf="@+id/brand_text"
+                app:layout_constraintTop_toBottomOf="@+id/product_image" />
+
+            <ImageView
+                android:id="@+id/discountImage"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_discount"
+                app:layout_constraintEnd_toEndOf="@id/product_image"
+                app:layout_constraintTop_toTopOf="@id/product_image" />
+
+            <TextView
+                android:id="@+id/discountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{String.format(@string/discount_format, viewModel.selectedProduct.discountPercentage)}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="@+id/discountImage"
+                app:layout_constraintStart_toStartOf="@+id/discountImage"
+                app:layout_constraintTop_toTopOf="@+id/discountImage"
+                tools:text="18%" />
+
+            <TextView
+                android:id="@+id/offText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/latoregular"
+                android:gravity="center"
+                android:text="@string/off"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="@+id/discountText"
+                app:layout_constraintStart_toStartOf="@+id/discountText"
+                app:layout_constraintTop_toBottomOf="@+id/discountText" />
+
+            <TextView
+                android:id="@+id/rating_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{String.format(`%.1f`, viewModel.selectedProduct.rating)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@+id/star_image"
+                app:layout_constraintTop_toBottomOf="@+id/product_image"
+                tools:text="4.5" />
+
+            <TextView
+                android:id="@+id/desc_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/latoregular"
+                android:padding="@dimen/_10sdp"
+                android:text="@{viewModel.selectedProduct.description}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/price_value_text"
+                app:layout_constraintTop_toBottomOf="@+id/price_value_text"
+                tools:text="hello what to say" />
+
+            <TextView
+                android:id="@+id/in_stock_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{viewModel.selectedProduct.availabilityStatus}"
+                android:textSize="@dimen/_12ssp"
+                app:availabilityStatus="@{viewModel.selectedProduct.availabilityStatus}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_image"
+                tools:text="in Stock" />
+
+            <TextView
+                android:id="@+id/warranty_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:background="@drawable/shape_text"
+                android:fontFamily="@font/latoregular"
+                android:padding="@dimen/_6sdp"
+                android:text="@{viewModel.selectedProduct.warrantyInformation}"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="@id/desc_text"
+                app:layout_constraintTop_toBottomOf="@+id/desc_text"
+                tools:text="hello what to say" />
+
+            <TextView
+                android:id="@+id/shipping_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:background="@drawable/shape_text"
+                android:fontFamily="@font/latoregular"
+                android:padding="@dimen/_6sdp"
+                android:text="@{viewModel.selectedProduct.shippingInformation}"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/warranty_text"
+                app:layout_constraintTop_toBottomOf="@+id/desc_text"
+                tools:text="hello what to say" />
+
+            <TextView
+                android:id="@+id/return_policy_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@string/return_policy"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="@id/warranty_text"
+                app:layout_constraintTop_toBottomOf="@id/shipping_text"
+                tools:text="Return Policy:" />
+
+            <TextView
+                android:id="@+id/return_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{viewModel.selectedProduct.returnPolicy}"
+                android:textColor="@color/brown"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/return_policy_label"
+                app:layout_constraintTop_toBottomOf="@+id/shipping_text"
+                tools:text="hello what to say" />
+
+            <ImageView
+                android:id="@+id/svgicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_10ssp"
+                android:src="@drawable/ic_myproduct"
+                app:layout_constraintStart_toStartOf="@id/return_policy_label"
+                app:layout_constraintTop_toBottomOf="@id/return_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

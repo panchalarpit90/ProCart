@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.example.procart.network.Product" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:backgroundTint="@color/white"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/mars_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140sdp"
+                android:adjustViewBounds="true"
+                android:background="@color/shimmerColor"
+                android:padding="@dimen/_8sdp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/RoundedSquare"
+                app:strokeColor="@color/card"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/brandText"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:background="@color/shimmerColor"
+                android:fontFamily="@font/latoregular"
+                android:maxLines="1"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mars_image" />
+
+            <ImageView
+                android:id="@+id/starImage"
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="@dimen/_8sdp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:src="@drawable/non_active_dot"
+                app:layout_constraintStart_toEndOf="@+id/brandText"
+                app:layout_constraintTop_toBottomOf="@+id/mars_image" />
+
+            <TextView
+                android:id="@+id/additionalText"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@color/shimmerColor"
+                android:fontFamily="@font/latoregular"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toEndOf="@+id/starImage"
+                app:layout_constraintTop_toBottomOf="@+id/mars_image" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/shimmerColor"
+                android:fontFamily="@font/latoregular"
+                android:maxLines="1"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/brandText" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/shimmerColor"
+                android:fontFamily="@font/latoregular"
+                android:maxLines="1"
+                android:textColor="@color/pink"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

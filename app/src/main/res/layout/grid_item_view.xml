@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.example.procart.network.Product" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:backgroundTint="@color/white"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/mars_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@color/card_light"
+                android:padding="7dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{product.thumbnail}"
+                app:shapeAppearanceOverlay="@style/RoundedSquare"
+                app:strokeColor="@color/card"
+                tools:ignore="MissingConstraints"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <ImageView
+                android:id="@+id/discountImage"
+                android:layout_width="60dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/ic_discount"
+                app:layout_constraintStart_toStartOf="@+id/mars_image"
+                app:layout_constraintTop_toTopOf="@id/mars_image" />
+
+            <TextView
+                android:id="@+id/discountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{String.format(@string/discount_format, product.discountPercentage)}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="@+id/discountImage"
+                app:layout_constraintStart_toStartOf="@+id/discountImage"
+                app:layout_constraintTop_toTopOf="@+id/discountImage"
+                tools:text="18%" />
+
+            <TextView
+                android:id="@+id/offText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/latoregular"
+                android:gravity="center"
+                android:text="@string/off_"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp"
+                app:layout_constraintEnd_toEndOf="@+id/discountText"
+                app:layout_constraintStart_toStartOf="@+id/discountText"
+                app:layout_constraintTop_toBottomOf="@+id/discountText" />
+
+            <TextView
+                android:id="@+id/brandText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/latoregular"
+                android:maxLines="1"
+                android:text="@{product.brand}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mars_image"
+                tools:text="H and M" />
+
+            <ImageView
+                android:id="@+id/starImage"
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="@dimen/_8sdp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:src="@drawable/star_ic"
+                app:layout_constraintStart_toEndOf="@+id/brandText"
+                app:layout_constraintTop_toBottomOf="@+id/mars_image" />
+
+            <TextView
+                android:id="@+id/additionalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/latoregular"
+                android:text="@{String.format(String.valueOf(product.rating))}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toEndOf="@+id/starImage"
+                app:layout_constraintTop_toBottomOf="@+id/mars_image"
+                tools:text="4.5" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/latoregular"
+                android:maxLines="1"
+                android:text="@{product.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/brandText"
+                tools:text="Electronics" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/latoregular"
+                android:maxLines="1"
+                android:text="@{String.format(`$%s`, String.valueOf(product.price))}"
+                android:textColor="@color/pink"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameText"
+                tools:text="$112" />
+
+            <Button
+                android:id="@+id/add_to_cart_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:backgroundTint="@color/pink"
+                android:fontFamily="@font/latoregular"
+                android:text="@string/add_to_cart"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceText" />
+
+            <LinearLayout
+                android:id="@+id/addMoreLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceText">
+
+                <Button
+                    android:id="@+id/minus_icon_btn"
+                    style="?attr/materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTint="@color/white"
+                    app:icon="@drawable/ic_minus"
+                    app:iconTint="@null" />
+
+                <TextView
+                    android:id="@+id/tvCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="05dp"
+                    android:layout_marginEnd="05dp"
+                    android:fontFamily="@font/latoregular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/_1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/add_icon_btn"
+                    style="?attr/materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTint="@color/white"
+                    app:icon="@drawable/ic_add"
+                    app:iconTint="@null" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
